@@ -6,17 +6,58 @@ namespace ChallengesWithTestsMark8
     {
         public int AddEvenSubtractOdd(int[] numbers)
         {
-            throw new NotImplementedException();
+            int result = 0;
+
+            if (numbers == null)
+            {
+                return 0;
+            }
+
+            for(int i = 0; i < numbers.Length; i++)
+            {
+                if (numbers[i] % 2 == 0)
+                {
+                    result += numbers[i];
+                } else //is odd
+                {
+                    result -= numbers[i];
+                }
+            }
+            return result;
+
+            
         }
 
         public int GetLengthOfShortestString(string str1, string str2, string str3, string str4)
         {
-            throw new NotImplementedException();
+            int[] lengths = new int[4] {str1.Length, str2.Length, str3.Length, str4.Length};
+            int shortestString = lengths[0];
+
+            for(int i=0; i < lengths.Length; i++)
+            {
+                if (lengths[i] < shortestString)
+                {
+                    shortestString = lengths[i];
+                }
+            }
+
+            return shortestString;
         }
 
         public int GetSmallestNumber(int number1, int number2, int number3, int number4)
         {
-            throw new NotImplementedException();
+            int[] numbers = new int[4] {number1, number2, number3, number4};
+            int smallestNumber = numbers[0];
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if (numbers[i] < smallestNumber)
+                {
+                    smallestNumber = numbers[i];
+                }
+            }
+
+            return smallestNumber;
         }
 
         public void ChangeBusinessNameTo_TrueCoders(Business biz)
