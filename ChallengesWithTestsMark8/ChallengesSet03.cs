@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ChallengesWithTestsMark8
 {
@@ -28,7 +29,14 @@ namespace ChallengesWithTestsMark8
 
         public bool IsSumOfOddsOdd(IEnumerable<int> numbers)
         {
-            throw new NotImplementedException();
+            if (numbers == null || numbers.Count() == 0)
+            {
+                return false;
+            }
+
+            int sum = numbers.Sum();
+            bool isOdd = (sum % 2 != 0) ? true : false;
+            return isOdd;
         }
 
         public bool PasswordContainsUpperLowerAndNumber(string password)
@@ -97,13 +105,13 @@ namespace ChallengesWithTestsMark8
         {
             var odds = new List<int>();
 
-            for(int i = 101; i > 0; i-= 2)
+            for(int i = 1; i < 100; i += 2)
             {
                 odds.Add(i);
             }
 
-            int[] oddsArray = odds.ToArray();
-            return oddsArray;
+            
+            return odds.ToArray();
         }
 
         public void ChangeAllElementsToUppercase(string[] words)
