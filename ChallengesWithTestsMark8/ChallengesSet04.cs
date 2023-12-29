@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ChallengesWithTestsMark8
 {
@@ -31,63 +33,93 @@ namespace ChallengesWithTestsMark8
         public int GetLengthOfShortestString(string str1, string str2, string str3, string str4)
         {
             int[] lengths = new int[4] {str1.Length, str2.Length, str3.Length, str4.Length};
-            int shortestString = lengths[0];
-
-            for(int i=0; i < lengths.Length; i++)
-            {
-                if (lengths[i] < shortestString)
-                {
-                    shortestString = lengths[i];
-                }
-            }
-
-            return shortestString;
+            
+            return lengths.Min();
         }
 
         public int GetSmallestNumber(int number1, int number2, int number3, int number4)
         {
             int[] numbers = new int[4] {number1, number2, number3, number4};
-            int smallestNumber = numbers[0];
 
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                if (numbers[i] < smallestNumber)
-                {
-                    smallestNumber = numbers[i];
-                }
-            }
-
-            return smallestNumber;
+            return numbers.Min();
         }
 
         public void ChangeBusinessNameTo_TrueCoders(Business biz)
         {
-            throw new NotImplementedException();
+            biz.Name = "TrueCoders";
         }
 
         public bool CouldFormTriangle(int sideLength1, int sideLength2, int sideLength3)
         {
-            throw new NotImplementedException();
+            bool isTriangle = ((sideLength1 + sideLength2 > sideLength3) && (sideLength2 + sideLength3 > sideLength1) && (sideLength1 + sideLength3 > sideLength2)) ? true : false;
+            return isTriangle;
         }
 
         public bool IsStringANumber(string input)
         {
-            throw new NotImplementedException();
+            bool result = int.TryParse(input, out int i);
+            if (result == true)
+            {
+                return true;
+            }
+
+            result = double.TryParse(input, out double d);
+            if (result == true)
+            {
+                return true;
+            }
+
+            result = decimal.TryParse(input, out decimal m);
+            if (result == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool MajorityOfElementsInArrayAreNull(object[] objs)
         {
-            throw new NotImplementedException();
+            var nulls = objs.Where(x => x == null).Count();
+            bool result = (nulls > (objs.Length / 2)) ? true : false;
+
+            return result;
         }
 
         public double AverageEvens(int[] numbers)
         {
-            throw new NotImplementedException();
+            if (numbers == null || numbers.Length == 0)
+            {
+                return 0;
+            }
+                var evens = numbers.Where(x => x % 2 == 0);
+                if (evens.Count() == 0)
+                {
+                    return 0;
+                }
+                    double average = evens.Average();
+                    return average;
+                
         }
 
         public int Factorial(int number)
         {
-            throw new NotImplementedException();
+            int factor = 1;
+
+            if (number < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            while (number > 1)
+            {
+                factor *= number;
+                number--;
+            }
+
+            return factor;
         }
     }
 }
